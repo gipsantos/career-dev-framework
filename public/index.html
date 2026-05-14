@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Career Development Framework · Kuehne+Nagel</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<svg style="display:none"><symbol id="kn-anchor" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="48" fill="#0D2B4E"/>
+  <circle cx="50" cy="24" r="9" fill="none" stroke="#fff" stroke-width="4"/>
+  <line x1="50" y1="33" x2="50" y2="68" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+  <line x1="26" y1="43" x2="74" y2="43" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+  <path d="M50,68 Q28,70 26,59" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+  <path d="M50,68 Q72,70 74,59" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="26" cy="58" r="4.5" fill="#fff"/><circle cx="74" cy="58" r="4.5" fill="#fff"/>
+</symbol></svg>
+
+<!-- LOGIN -->
+<div id="screen-login">
+  <div class="full-page">
+    <div class="login-card">
+      <div class="login-logo">
+        <svg width="50" height="50"><use href="#kn-anchor"/></svg>
+        <div><h2>KUEHNE+NAGEL</h2><p>Career Development Framework</p></div>
+      </div>
+      <div class="tabs">
+        <button class="tab on" id="tab-team" onclick="setTab('team')">👤 Team Member</button>
+        <button class="tab" id="tab-adm" onclick="setTab('adm')">⚙ Admin</button>
+      </div>
+      <div id="pnl-team">
+        <div class="fg"><label>Your Name</label>
+          <input class="fi" id="l-name" placeholder="e.g. Ana Silva" onkeydown="if(event.key==='Enter')doLogin()"></div>
+        <div class="fg"><label>Team Code <span style="color:#aaa;font-weight:400;font-size:.7rem">(from your team lead)</span></label>
+          <input class="fi" id="l-code" placeholder="e.g. seamasters" onkeydown="if(event.key==='Enter')doLogin()"></div>
+        <button class="btn btn-p" style="width:100%;padding:11px;margin-top:4px" onclick="doLogin()">Enter →</button>
+        <p style="font-size:.7rem;color:#aaa;text-align:center;margin-top:10px">First time? You'll be added automatically.</p>
+      </div>
+      <div id="pnl-adm" style="display:none">
+        <div class="fg"><label>Admin Code</label>
+          <input class="fi" id="l-adm" type="password" placeholder="Enter admin code" onkeydown="if(event.key==='Enter')doAdminLogin()"></div>
+        <button class="btn btn-p" style="width:100%;padding:11px;margin-top:4px" onclick="doAdminLogin()">Enter as Admin →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ROLE PICKER -->
+<div id="screen-role" style="display:none">
+  <div class="full-page">
+    <div class="role-picker-card">
+      <div class="fx mb12">
+        <svg width="36" height="36"><use href="#kn-anchor"/></svg>
+        <div><h2 style="color:var(--kn);font-size:1.1rem">Select your Role</h2>
+          <p style="color:#888;font-size:.8rem">This determines your skill matrix for the assessment.</p></div>
+      </div>
+      <div id="role-opts"></div>
+      <button class="btn btn-p mt16" style="width:100%" onclick="confirmRole()">Confirm & Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- APP LAYOUT -->
+<div id="app-layout">
+  <aside id="sidebar">
+    <div class="sb-logo">
+      <svg width="32" height="32"><use href="#kn-anchor"/></svg>
+      <div class="sb-logo-text"><h2>KUEHNE+NAGEL</h2><p>Career Dev Framework</p></div>
+    </div>
+    <div id="sb-team-info" style="padding:10px 16px 6px;border-bottom:1px solid rgba(255,255,255,.08)">
+      <div id="sb-team-name" style="color:#F9E79F;font-size:.82rem;font-weight:700"></div>
+      <div id="sb-user-name" style="color:#AED6F1;font-size:.74rem;margin-top:1px"></div>
+    </div>
+    <div id="sb-dev-menu" style="display:none">
+      <div class="sb-section">My Work</div>
+      <div class="sb-item" id="sb-assess" onclick="go('assess')"><span class="icon">📋</span>My Assessment</div>
+      <div class="sb-item" id="sb-plan" onclick="go('plan')"><span class="icon">🎯</span>Action Plan</div>
+    </div>
+    <div id="sb-lead-menu" style="display:none">
+      <div class="sb-section">Team</div>
+      <div class="sb-item" id="sb-coverage" onclick="go('coverage')"><span class="icon">🗺️</span>Coverage Map</div>
+      <div class="sb-item" id="sb-dashboard" onclick="go('dashboard')"><span class="icon">📊</span>Dashboard</div>
+      <div class="sb-section">Setup</div>
+      <div class="sb-item" id="sb-config" onclick="go('config')"><span class="icon">⚙️</span>Configure Team</div>
+    </div>
+    <div id="sb-admin-menu" style="display:none">
+      <div class="sb-section">Administration</div>
+      <div class="sb-item" id="sb-admin" onclick="go('admin')"><span class="icon">⚙️</span>Admin Panel</div>
+    </div>
+    <div class="sb-spacer"></div>
+    <div class="sb-exit" onclick="doLogout()">← Exit / Change Profile</div>
+  </aside>
+
+  <main id="main">
+    <div id="screen-assess" style="display:none"></div>
+    <div id="screen-plan" style="display:none">
+      <div class="fb mb16">
+        <div><div class="pg-t">My Action Plan</div><div class="pg-s">SMART development goals.</div></div>
+        <button class="btn btn-p" onclick="openActModal(null,null)">+ Add Goal</button>
+      </div>
+      <div id="plan-list"></div>
+    </div>
+    <div id="screen-coverage" style="display:none">
+      <div class="pg-t">Team Coverage Map</div>
+      <div class="pg-s">Skills as rows · Members as columns · 🟡 = priority skill (goal: ≥ 2 people scoring ≥ 3).</div>
+      <div class="fx mb12" id="cov-role-filters" style="flex-wrap:wrap;gap:6px"></div>
+      <div id="cov-sum" class="sum-row"></div>
+      <div class="card" style="overflow-x:auto;padding:0"><div id="cov-tbl"></div></div>
+    </div>
+    <div id="screen-dashboard" style="display:none">
+      <div class="pg-t">Team Dashboard</div>
+      <div class="pg-s">Click a member to view their assessment, calibration and action plan.</div>
+      <div id="d-cards" class="mcards"></div>
+      <div id="d-detail" style="display:none">
+        <div class="dtabs">
+          <button class="dtab on" onclick="dTab('overview')">📊 Overview</button>
+          <button class="dtab" onclick="dTab('matrix')">📋 Assessment & Calibration</button>
+          <button class="dtab" onclick="dTab('actions')">🎯 Action Plan</button>
+        </div>
+        <div id="dt-overview"></div>
+        <div id="dt-matrix" style="display:none"></div>
+        <div id="dt-actions" style="display:none"></div>
+      </div>
+    </div>
+    <div id="screen-config" style="display:none">
+      <div class="pg-t mb12">⚙ Team Configuration</div>
+      <div class="cfg-tabs">
+        <button class="cfg-tab on" onclick="cfgTab('info')">Team Info</button>
+        <button class="cfg-tab" onclick="cfgTab('roles')">Roles &amp; Matrices</button>
+        <button class="cfg-tab" onclick="cfgTab('members')">Members</button>
+      </div>
+      <div id="cfg-info"></div>
+      <div id="cfg-roles" style="display:none"></div>
+      <div id="cfg-members" style="display:none"></div>
+    </div>
+    <div id="screen-admin" style="display:none">
+      <div class="fb mb16">
+        <div><div class="pg-t">⚙ Admin Panel</div><div class="pg-s">Manage all teams across the organisation.</div></div>
+        <button class="btn btn-p" onclick="openTeamModal(null)">+ New Team</button>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <table class="atbl"><thead><tr>
+          <th>Team</th><th>Code</th><th>Lead</th><th>Roles</th><th>Members</th><th>Assessed</th><th>Created</th><th>Actions</th>
+        </tr></thead><tbody id="adm-tbody"></tbody></table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div id="ov" onclick="closeModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <h3 id="m-title"></h3>
+    <div id="m-body"></div>
+    <div class="fx mt16" style="justify-content:flex-end;gap:8px">
+      <button class="btn btn-g" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-save" onclick="_ms&&_ms()">Save</button>
+    </div>
+  </div>
+</div>
+<div id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>

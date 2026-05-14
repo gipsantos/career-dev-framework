@@ -1,0 +1,577 @@
+{
+  "teams": [
+    {
+      "id": "team-1778777094043-sx6b2",
+      "name": "SeaMasters",
+      "code": "sm_cdf",
+      "leadName": "Gisela Neves",
+      "description": "",
+      "icon": "⚓",
+      "color": "#0D2B4E",
+      "members": [
+        {
+          "name": "Gisela neves",
+          "roleId": "role-1778777181250-kyni3"
+        },
+        {
+          "name": "José Chavarria",
+          "roleId": "role-1778777169805-95adm"
+        },
+        {
+          "name": "Francisco Azevedo",
+          "roleId": "role-1778777162789-ttiee"
+        },
+        {
+          "name": "Miguel Ferreira",
+          "roleId": "role-1778777162789-ttiee"
+        },
+        {
+          "name": "João Martins",
+          "roleId": "role-1778777162789-ttiee"
+        }
+      ],
+      "roles": [
+        {
+          "id": "role-1778777141773-2k2z2",
+          "name": "Busines Analyst",
+          "desc": "Analysts bridging business needs with technical delivery.",
+          "sections": [
+            {
+              "id": "ba1",
+              "name": "Core BA Skills",
+              "color": "tech",
+              "skills": [
+                {
+                  "id": "req",
+                  "name": "Requirements Elicitation",
+                  "cov": "All",
+                  "desc": "Gather and document business requirements clearly."
+                },
+                {
+                  "id": "userst",
+                  "name": "User Stories & Acceptance Criteria",
+                  "cov": "All",
+                  "desc": "Write clear user stories and measurable AC."
+                },
+                {
+                  "id": "bpmn",
+                  "name": "Process Modelling – BPMN",
+                  "cov": "All",
+                  "desc": "Model business processes with clarity and precision."
+                },
+                {
+                  "id": "datamod",
+                  "name": "Data Modelling & Analysis",
+                  "cov": "All",
+                  "desc": "Understand data structures; model and analyse data flows."
+                },
+                {
+                  "id": "sql-ba",
+                  "name": "SQL / Data Querying",
+                  "cov": "2+ people",
+                  "desc": "Write SQL to validate data and support analysis."
+                },
+                {
+                  "id": "sk-1778783759301",
+                  "name": "BA Tools (Jira, Confluence)",
+                  "desc": "Use BA tools effectively for tracking and wireframing.",
+                  "cov": "Specialist"
+                }
+              ]
+            },
+            {
+              "id": "ba2",
+              "name": "📦 Business & Domain",
+              "color": "biz",
+              "skills": [
+                {
+                  "id": "domain-ba",
+                  "name": "Maritime Schedule Domain",
+                  "cov": "All",
+                  "desc": "Schedule lifecycle, ETA/ETD, port calls, rotations. Core domain."
+                },
+                {
+                  "id": "products-ba",
+                  "name": "KN Products",
+                  "cov": "All",
+                  "desc": "SeaAlloc, Quote, SALog, SeaExplorer – customer impact."
+                },
+                {
+                  "id": "bizgoals",
+                  "name": "Business Goals Alignment",
+                  "cov": "All",
+                  "desc": "Connect requirements to business goals and KN strategy."
+                },
+                {
+                  "id": "cost-ba",
+                  "name": "Cost & Value Awareness",
+                  "cov": "All",
+                  "desc": "Assess business value and cost implications of requirements."
+                }
+              ]
+            },
+            {
+              "id": "ba3",
+              "name": "🤝 Behavioural Skills",
+              "color": "beh",
+              "skills": [
+                {
+                  "id": "stakemgmt",
+                  "name": "Stakeholder Management",
+                  "cov": "All",
+                  "desc": "Build relationships and manage expectations across all levels."
+                },
+                {
+                  "id": "facilit",
+                  "name": "Facilitation & Workshop Leading",
+                  "cov": "All",
+                  "desc": "Run effective workshops, refinements and discovery sessions."
+                },
+                {
+                  "id": "critth",
+                  "name": "Critical & Analytical Thinking",
+                  "cov": "All",
+                  "desc": "Analyse problems systematically; challenge assumptions."
+                },
+                {
+                  "id": "docs-ba",
+                  "name": "Documentation & Communication",
+                  "cov": "All",
+                  "desc": "Produce clear, structured documentation for all audiences."
+                },
+                {
+                  "id": "agile-ba",
+                  "name": "Agile & Backlog Ownership",
+                  "cov": "All",
+                  "desc": "Apply Agile values; co-own the backlog with the team."
+                }
+              ]
+            },
+            {
+              "id": "ba4",
+              "name": "🤖 AI & Automation Skills",
+              "color": "ai",
+              "skills": [
+                {
+                  "id": "ai-ba-tools",
+                  "name": "AI-Assisted Analysis",
+                  "cov": "All",
+                  "desc": "Use AI tools for requirements analysis, documentation and research."
+                },
+                {
+                  "id": "ai-ba-prompt",
+                  "name": "Prompt Engineering for BA",
+                  "cov": "All",
+                  "desc": "Craft prompts for user story generation, process analysis, data queries."
+                },
+                {
+                  "id": "ai-ba-validate",
+                  "name": "AI Output Validation",
+                  "cov": "All",
+                  "desc": "Critically review AI-generated requirements and documentation."
+                },
+                {
+                  "id": "ai-ba-automate",
+                  "name": "Process Automation with AI",
+                  "cov": "2+ people",
+                  "desc": "Automate repetitive BA tasks using AI tools and workflows."
+                }
+              ]
+            }
+          ],
+          "createdAt": "2026-05-14T16:45:41.773Z"
+        },
+        {
+          "id": "role-1778777162789-ttiee",
+          "name": "Software Engineer",
+          "desc": "Full-stack engineers with cloud, data and backend services.",
+          "sections": [
+            {
+              "id": "st1",
+              "name": "Hard Skills – 2026 Profile",
+              "color": "tech",
+              "skills": [
+                {
+                  "id": "python",
+                  "name": "Python",
+                  "cov": "All",
+                  "desc": "Write clean Python applying OOP and best practices."
+                },
+                {
+                  "id": "restapi",
+                  "name": "REST API Development",
+                  "cov": "All",
+                  "desc": "Design and implement RESTful APIs with auth and versioning."
+                },
+                {
+                  "id": "cicd",
+                  "name": "CI/CD – GitLab CI",
+                  "cov": "All",
+                  "desc": "Create and evolve pipelines supporting continuous deployment."
+                },
+                {
+                  "id": "kafka",
+                  "name": "Kafka 🟡",
+                  "cov": "2+ people",
+                  "desc": "Build producers/consumers. Async-to-Snowflake patterns."
+                },
+                {
+                  "id": "aws",
+                  "name": "AWS – EKS, S3, IAM 🟡",
+                  "cov": "2+ people",
+                  "desc": "Work with AWS services applying basic security principles."
+                },
+                {
+                  "id": "terraform",
+                  "name": "Terraform / IaC 🟡",
+                  "cov": "2+ people",
+                  "desc": "Write Terraform to create and manage infrastructure."
+                },
+                {
+                  "id": "airflow",
+                  "name": "Airflow 🟡",
+                  "cov": "2+ people",
+                  "desc": "Write and deploy Airflow DAGs; manage task dependencies."
+                },
+                {
+                  "id": "snowflake",
+                  "name": "Snowflake / Data WH 🟡",
+                  "cov": "2+ people",
+                  "desc": "Query, model, optimise data. Understand data historisation."
+                },
+                {
+                  "id": "dashboard",
+                  "name": "Dashboarding & Viz 🟡",
+                  "cov": "2+ people",
+                  "desc": "Build programmatic dashboards from schedule data."
+                },
+                {
+                  "id": "frontend",
+                  "name": "Frontend Development",
+                  "cov": "2 people",
+                  "desc": "Build and maintain functional frontend features."
+                },
+                {
+                  "id": "monitoring",
+                  "name": "Monitoring – GOP",
+                  "cov": "Specialist",
+                  "desc": "Configure alerts and dashboards; contribute to observability."
+                }
+              ]
+            },
+            {
+              "id": "st2",
+              "name": "Business & Domain",
+              "color": "biz",
+              "skills": [
+                {
+                  "id": "domain",
+                  "name": "Maritime Schedule Domain",
+                  "cov": "All",
+                  "desc": "Voyage lifecycle, ETA/ETD, cut-offs, rotations. Core domain knowledge."
+                },
+                {
+                  "id": "products",
+                  "name": "KN Products (SeaAlloc, SALog, Quote, SeaExplorer)",
+                  "cov": "All",
+                  "desc": "How KN products interconnect. Knowing other domains exceeds expectations."
+                },
+                {
+                  "id": "dataflows",
+                  "name": "Schedule Data Flows & Integrations",
+                  "cov": "All",
+                  "desc": "Map end-to-end data flows; identify integration risks."
+                },
+                {
+                  "id": "dquality",
+                  "name": "Data Quality & Consistency",
+                  "cov": "All",
+                  "desc": "Implement validations; communicate downstream impact."
+                },
+                {
+                  "id": "cost",
+                  "name": "Cost Awareness",
+                  "cov": "All",
+                  "desc": "Consider cloud costs; flag expensive patterns."
+                },
+                {
+                  "id": "stakeholders",
+                  "name": "Stakeholder Management",
+                  "cov": "All",
+                  "desc": "Communicate clearly with Ops, Commercial, IT and Product."
+                }
+              ]
+            },
+            {
+              "id": "st3",
+              "name": "Behavioural / Soft Skills",
+              "color": "beh",
+              "skills": [
+                {
+                  "id": "pairing",
+                  "name": "Pair Programming & Knowledge Sharing",
+                  "cov": "All",
+                  "desc": "Initiate pairing; share knowledge via demos and docs."
+                },
+                {
+                  "id": "feedback",
+                  "name": "Constructive Feedback",
+                  "cov": "All",
+                  "desc": "Give and receive technical feedback objectively."
+                },
+                {
+                  "id": "techbl",
+                  "name": "Technical Backlog & Improvement",
+                  "cov": "All",
+                  "desc": "Identify improvement opportunities at code and infra level."
+                },
+                {
+                  "id": "proactive",
+                  "name": "Proactive Improvement Behaviour",
+                  "cov": "All",
+                  "desc": "Spot and act on improvements without being asked."
+                },
+                {
+                  "id": "docs",
+                  "name": "Technical Documentation",
+                  "cov": "All",
+                  "desc": "Produce clear docs (C4, FO, ADRs) for different audiences."
+                },
+                {
+                  "id": "comms",
+                  "name": "Clear & Adapted Communication",
+                  "cov": "All",
+                  "desc": "Communicate clearly to technical and non-technical audiences."
+                },
+                {
+                  "id": "ownership",
+                  "name": "Accountability & Ownership",
+                  "cov": "All",
+                  "desc": "Take full ownership, including when things go wrong."
+                },
+                {
+                  "id": "agile",
+                  "name": "Agile & Continuous Delivery",
+                  "cov": "All",
+                  "desc": "Apply Agile values; support short cycles and quality."
+                }
+              ]
+            },
+            {
+              "id": "st4",
+              "name": "AI & Automation Skills",
+              "color": "ai",
+              "skills": [
+                {
+                  "id": "ai-tools",
+                  "name": "AI-Assisted Development",
+                  "cov": "All",
+                  "desc": "Use AI coding assistants (Copilot, Kiro) effectively in daily work."
+                },
+                {
+                  "id": "ai-prompting",
+                  "name": "Prompt Engineering",
+                  "cov": "All",
+                  "desc": "Write effective prompts for code generation, analysis and documentation."
+                },
+                {
+                  "id": "ai-review",
+                  "name": "AI Output Review & Validation",
+                  "cov": "All",
+                  "desc": "Critically evaluate AI-generated code for correctness and security."
+                },
+                {
+                  "id": "ai-automate",
+                  "name": "AI-Powered Automation",
+                  "cov": "2+ people",
+                  "desc": "Build automated workflows using AI (testing, docs, data pipelines)."
+                },
+                {
+                  "id": "ai-awareness",
+                  "name": "AI Trends & Responsible Use",
+                  "cov": "All",
+                  "desc": "Stay current on AI capabilities; apply ethical and responsible AI practices."
+                }
+              ]
+            }
+          ],
+          "createdAt": "2026-05-14T16:46:02.789Z"
+        },
+        {
+          "id": "role-1778777169805-95adm",
+          "name": "Architect",
+          "desc": "Architects responsible for technical design and alignment.",
+          "sections": [
+            {
+              "id": "ar1",
+              "name": "🛠️ Architecture Skills",
+              "color": "tech",
+              "skills": [
+                {
+                  "id": "patterns",
+                  "name": "Architecture Patterns",
+                  "cov": "All",
+                  "desc": "Apply microservices, event-driven and layered patterns."
+                },
+                {
+                  "id": "c4",
+                  "name": "C4 Modelling & ADRs",
+                  "cov": "All",
+                  "desc": "Produce clear C4 diagrams and architecture decisions."
+                },
+                {
+                  "id": "cloud-a",
+                  "name": "Cloud Architecture – AWS",
+                  "cov": "All",
+                  "desc": "Design scalable, secure, cost-aware cloud architectures."
+                },
+                {
+                  "id": "data-a",
+                  "name": "Data Architecture",
+                  "cov": "All",
+                  "desc": "Design data models, integration patterns and contracts."
+                },
+                {
+                  "id": "security",
+                  "name": "Security by Design",
+                  "cov": "All",
+                  "desc": "Apply security principles from design (OWASP, IAM)."
+                },
+                {
+                  "id": "kafka-a",
+                  "name": "Event-Driven Architecture",
+                  "cov": "All",
+                  "desc": "Design resilient event-driven systems with Kafka."
+                }
+              ]
+            },
+            {
+              "id": "ar2",
+              "name": "📦 Business Alignment",
+              "color": "biz",
+              "skills": [
+                {
+                  "id": "domain-a",
+                  "name": "Maritime Schedule Domain",
+                  "cov": "All",
+                  "desc": "Connect architectural decisions to operational reality."
+                },
+                {
+                  "id": "roadmap",
+                  "name": "Technical Roadmap & Strategy",
+                  "cov": "All",
+                  "desc": "Define and communicate a technical roadmap for the domain."
+                },
+                {
+                  "id": "cost-a",
+                  "name": "Cost Optimisation Strategy",
+                  "cov": "All",
+                  "desc": "Define cost-aware architecture; evaluate build vs buy."
+                }
+              ]
+            },
+            {
+              "id": "ar3",
+              "name": "🤝 Leadership & Communication",
+              "color": "beh",
+              "skills": [
+                {
+                  "id": "lead-a",
+                  "name": "Technical Leadership",
+                  "cov": "All",
+                  "desc": "Lead by example; influence decisions without authority."
+                },
+                {
+                  "id": "review",
+                  "name": "Design & Code Review",
+                  "cov": "All",
+                  "desc": "Conduct architecture and code reviews; raise the bar."
+                },
+                {
+                  "id": "mentor-a",
+                  "name": "Mentoring",
+                  "cov": "All",
+                  "desc": "Develop engineers; share architectural knowledge proactively."
+                },
+                {
+                  "id": "comms-a",
+                  "name": "Technical Communication",
+                  "cov": "All",
+                  "desc": "Present complex architecture to all audiences."
+                }
+              ]
+            },
+            {
+              "id": "ar4",
+              "name": "🤖 AI & Automation Skills",
+              "color": "ai",
+              "skills": [
+                {
+                  "id": "ai-arch-design",
+                  "name": "AI-Assisted Architecture Design",
+                  "cov": "All",
+                  "desc": "Leverage AI for architecture exploration, trade-off analysis, documentation."
+                },
+                {
+                  "id": "ai-arch-eval",
+                  "name": "AI Solution Evaluation",
+                  "cov": "All",
+                  "desc": "Evaluate AI/ML solutions for integration into system architecture."
+                },
+                {
+                  "id": "ai-arch-govern",
+                  "name": "AI Governance & Ethics",
+                  "cov": "All",
+                  "desc": "Define guidelines for responsible AI use in the team and products."
+                }
+              ]
+            }
+          ],
+          "createdAt": "2026-05-14T16:46:09.805Z"
+        },
+        {
+          "id": "role-1778777181250-kyni3",
+          "name": "Team Lead",
+          "desc": "",
+          "sections": [],
+          "createdAt": "2026-05-14T16:46:21.250Z"
+        }
+      ],
+      "createdAt": "2026-05-14T16:44:54.043Z"
+    }
+  ],
+  "assessments": {
+    "team-1778777094043-sx6b2": {
+      "José Chavarria": {
+        "scores": {
+          "patterns": 4,
+          "c4": 4,
+          "cloud-a": 4,
+          "data-a": 4,
+          "security": 4,
+          "kafka-a": 4,
+          "domain-a": 4,
+          "roadmap": 5,
+          "cost-a": 4,
+          "lead-a": 4,
+          "review": 4,
+          "mentor-a": 3,
+          "comms-a": 4,
+          "ai-arch-design": 5,
+          "ai-arch-eval": 5,
+          "ai-arch-govern": 5
+        },
+        "evidence": {},
+        "calibratedScores": {},
+        "calibrationNotes": {},
+        "actions": [],
+        "level": "",
+        "proficiency": "",
+        "calibratedLevel": "",
+        "roleId": "role-1778777169805-95adm",
+        "history": [],
+        "lastSaved": "2026-05-14T18:39:08.123Z"
+      }
+    }
+  }
+}

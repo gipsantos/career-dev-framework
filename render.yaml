@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: career-dev-framework
+    runtime: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ADMIN_CODE
+        value: admin2026
+    disk:
+      name: cdp-data
+      mountPath: /data
+      sizeGB: 1
