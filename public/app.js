@@ -141,8 +141,11 @@ async function doLogin() {
     S.role=r.role; S.teamId=r.team.id; S.teamName=r.team.name;
     S.teamIcon=r.team.icon||'👥'; S.teamColor=r.team.color||'#0D2B4E';
     S.userName=r.userName; S.roleId=r.memberRoleId;
-    if (r.needsRolePick && r.roles.length > 0) { _pendingRoles=r.roles; showRolePicker(r.roles); return; }
-    if (r.role==='dev' && r.roles.length > 0) {
+    // Show role picker for devs without a role, or leads without a role who have roles available
+    if (!S.roleId && r.roles.length > 0 && (r.needsRolePick || r.role==='lead')) {
+      _pendingRoles=r.roles; showRolePicker(r.roles); return;
+    }
+    if (r.roles.length > 0) {
       const myRole = r.roles.find(x => x.id===S.roleId);
       if (myRole) { S.roleName=myRole.name; S.matrix=myRole.sections||[]; }
     }
@@ -193,7 +196,8 @@ function launchApp() {
   document.getElementById('sb-team-name').textContent = `${S.teamIcon||''} ${S.teamName||''}`;
   document.getElementById('sb-user-name').textContent = S.userName;
   const isLead=S.role==='lead', isAdm=S.role==='admin';
-  document.getElementById('sb-dev-menu').style.display   = (!isLead&&!isAdm) ? '' : 'none';
+  // Lead sees BOTH dev menu (My Assessment, Action Plan) AND lead menu
+  document.getElementById('sb-dev-menu').style.display   = (!isAdm) ? '' : 'none';
   document.getElementById('sb-lead-menu').style.display  = isLead  ? '' : 'none';
   document.getElementById('sb-admin-menu').style.display = isAdm   ? '' : 'none';
   if (isAdm)       go('admin');
@@ -1018,13 +1022,51 @@ function openTeamModal(id,name='',code='',lead='',desc='',icon='👥',color='#0D
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px">
       <div class="fg"><label>Icon</label><div class="fx" style="flex-wrap:wrap;gap:5px;margin-top:4px">${ICONS.map(ic=>`<button class="icon-btn ${icon===ic?'sel':''}" onclick="pickTI('${ic}')">${ic}</button>`).join('')}</div><input type="hidden" id="t-icon" value="${icon}"></div>
       <div class="fg"><label>Colour</label><div class="fx" style="flex-wrap:wrap;gap:6px;margin-top:4px">${COLORS.map(c=>`<div class="color-dot ${color===c?'sel':''}" style="background:${c}" onclick="pickTC('${c}')"></div>`).join('')}</div><input type="hidden" id="t-color" value="${color}"></div>
-    </div>`;
+    </div>
+    ${isNew ? `
+    <div class="fg mt12" style="border-top:1px solid #eee;padding-top:12px">
+      <label>Team Members <span style="color:#aaa;font-weight:400;font-size:.7rem">(optional — can add later)</span></label>
+      <div id="t-members-list" style="margin-top:8px"></div>
+      <div style="display:grid;grid-template-columns:1fr auto;gap:6px;margin-top:8px">
+        <input class="fi" id="t-member-name" placeholder="Member name" style="font-size:.82rem" onkeydown="if(event.key==='Enter'){event.preventDefault();addTeamMember();}">
+        <button class="btn btn-g btn-sm" onclick="addTeamMember()">+ Add</button>
+      </div>
+    </div>` : ''}`;
+  if(isNew) window._newTeamMembers = [];
   _ms=isNew?createTeam:()=>updateTeam(id);
   openModal();
 }
+
+function addTeamMember() {
+  const input = document.getElementById('t-member-name');
+  const name = input.value.trim();
+  if (!name) return;
+  if (window._newTeamMembers.find(m => m.name.toLowerCase() === name.toLowerCase())) { toast('Already added'); return; }
+  window._newTeamMembers.push({ name, roleId: null });
+  input.value = '';
+  renderNewTeamMembers();
+}
+
+function removeNewTeamMember(idx) {
+  window._newTeamMembers.splice(idx, 1);
+  renderNewTeamMembers();
+}
+
+function renderNewTeamMembers() {
+  const list = document.getElementById('t-members-list');
+  if (!list) return;
+  list.innerHTML = window._newTeamMembers.map((m, i) => `
+    <div class="fx" style="padding:4px 8px;background:var(--grey);border-radius:6px;margin-bottom:4px;justify-content:space-between">
+      <span style="font-size:.82rem;font-weight:600">${m.name}</span>
+      <button class="btn btn-g btn-xs" style="color:var(--r1)" onclick="removeNewTeamMember(${i})">✕</button>
+    </div>`).join('');
+}
 function pickTI(ic){document.getElementById('t-icon').value=ic;document.querySelectorAll('#m-body .icon-btn').forEach(b=>b.classList.toggle('sel',b.textContent.trim()===ic));}
 function pickTC(c){document.getElementById('t-color').value=c;document.querySelectorAll('#m-body .color-dot').forEach(d=>d.classList.toggle('sel',d.style.background===c||d.style.background===hexRgb(c)));}
-async function createTeam(){const name=document.getElementById('t-name').value.trim(),code=document.getElementById('t-code').value.trim(),lead=document.getElementById('t-lead').value.trim();if(!name||!code||!lead){toast('Name, code and lead required');return;}await api('POST','/api/admin/teams',{name,code,leadName:lead,description:document.getElementById('t-desc').value.trim(),icon:document.getElementById('t-icon').value,color:document.getElementById('t-color').value});closeModal();renderAdmin();toast('✅ Team created!');}
+async function createTeam(){const name=document.getElementById('t-name').value.trim(),code=document.getElementById('t-code').value.trim(),lead=document.getElementById('t-lead').value.trim();if(!name||!code||!lead){toast('Name, code and lead required');return;}const teamData=await api('POST','/api/admin/teams',{name,code,leadName:lead,description:document.getElementById('t-desc').value.trim(),icon:document.getElementById('t-icon').value,color:document.getElementById('t-color').value});
+  // Add members if any were specified
+  if(window._newTeamMembers&&window._newTeamMembers.length){for(const m of window._newTeamMembers){await api('POST',`/api/teams/${teamData.id}/members`,{name:m.name,roleId:m.roleId});}}
+  window._newTeamMembers=[];closeModal();renderAdmin();toast('✅ Team created!');}
 async function updateTeam(id){await api('PUT',`/api/admin/teams/${id}`,{name:document.getElementById('t-name').value.trim(),leadName:document.getElementById('t-lead').value.trim(),description:document.getElementById('t-desc').value.trim(),icon:document.getElementById('t-icon').value,color:document.getElementById('t-color').value});closeModal();renderAdmin();toast('✅ Updated!');}
 async function delTeam(id){if(!confirm('Delete this team and all data?'))return;await api('DELETE',`/api/admin/teams/${id}`);renderAdmin();}
 

@@ -84,14 +84,26 @@ app.post('/api/login', async (req, res) => {
     await db.saveTeam(team);
   }
 
+  // Lead can also be in the members list (for self-assessment)
+  let leadMember = null;
+  if (isLead) {
+    leadMember = team.members.find(m => m.name.toLowerCase() === team.leadName.toLowerCase());
+    if (!leadMember) {
+      leadMember = { name: team.leadName, roleId: null };
+      team.members.push(leadMember);
+      await db.saveTeam(team);
+    }
+  }
+
   const resolvedName = isLead ? team.leadName : (member?.name || userName.trim());
-  const needsRolePick = !isLead && (!member?.roleId);
+  const memberRoleId = isLead ? (leadMember?.roleId || null) : (member?.roleId || null);
+  const needsRolePick = !isLead && (!member?.roleId) && (team.roles||[]).length > 0;
 
   res.json({
     role:          isLead ? 'lead' : 'dev',
     team:          { id: team.id, name: team.name, leadName: team.leadName, icon: team.icon, color: team.color },
     userName:      resolvedName,
-    memberRoleId:  member?.roleId || null,
+    memberRoleId:  memberRoleId,
     needsRolePick,
     roles:         team.roles || [],
   });
