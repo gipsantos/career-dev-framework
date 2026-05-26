@@ -366,7 +366,7 @@ function launchApp() {
   const devMenu = document.getElementById('sb-dev-menu');
   const leadMenu = document.getElementById('sb-lead-menu');
   const setupMenu = document.getElementById('sb-setup-menu');
-  if (devMenu)   devMenu.style.display   = (!isAdm && !isEM) ? '' : 'none';
+  if (devMenu)   devMenu.style.display   = (!isAdm && !isEM && S.roleLabel !== 'Product Lead') ? '' : 'none';
   if (leadMenu)  leadMenu.style.display  = (isLead||isEM) ? '' : 'none';
   if (setupMenu) setupMenu.style.display = (isLead||isEM) ? '' : 'none';
 
