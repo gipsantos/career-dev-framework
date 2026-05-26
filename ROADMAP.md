@@ -47,29 +47,30 @@ A platform that enables team leads to structure, track, and support the career d
 
 ### P1 — Next Iteration (Planned)
 
-| # | Requirement | Description |
-|---|-------------|-------------|
-| F16 | **Editable matrix entries** | Edit existing skills in a role matrix (name, description, coverage) without having to delete and recreate |
-| F17 | **Skill reordering** | Drag-and-drop or move up/down to reorder skills within a section |
-| F18 | **Coverage Map — non-applicable skills** | Skills not in a member's role matrix should appear visually distinct (greyed out / N/A) |
-| F19 | **Coverage Map — filter by section** | Filter the coverage map by skill section (Hard Skills, Business, Behavioural, AI) |
-| F20 | **Skill pool / library** | Global pool of competencies that can be reused across teams and roles |
-| F21 | **Template suggestions** | When creating a new role, suggest skills from similar roles already in the system |
-| F22 | **Assessment guidance** | Tooltip or expandable section explaining what each score level means for that specific skill |
-| F23 | **Export assessment** | Export individual assessment as PDF for 1:1 conversations |
+| # | Requirement | Description | Status |
+|---|-------------|-------------|--------|
+| F16 | **Editable matrix entries** | Edit existing skills in a role matrix (name, description, coverage target) without having to delete and recreate | ✅ Done |
+| F17 | **Configurable coverage targets** | Define coverage target per skill per role (All, 2+ people, Specialist, or custom number). "All" applies to the role scope, not the whole team | ✅ Done |
+| F18 | **Skill reordering** | Drag-and-drop or move up/down to reorder skills within a section | ✅ Done |
+| F19 | **Coverage Map — non-applicable skills** | Skills not in a member's role matrix should appear visually distinct (greyed out / N/A) | ✅ Done |
+| F20 | **Coverage Map — filter by section** | Filter the coverage map by skill section (Hard Skills, Business, Behavioural, AI) | ✅ Done |
+| F21 | **Skill pool / library** | Global pool of competencies that can be reused across teams and roles | ⏳ Planned |
+| F22 | **Template suggestions** | When creating a new role, suggest skills from similar roles already in the system | ⏳ Planned |
+| F23 | **Assessment guidance** | Tooltip or expandable section explaining what each score level means for that specific skill | ✅ Done |
+| F24 | **Export assessment** | Export individual assessment as PDF for 1:1 conversations | ⏳ Planned |
 
 ### P2 — Important (After P1)
 
-| # | Requirement | Description |
-|---|-------------|-------------|
-| F24 | **Multiple team leads / shared access** | Allow more than one person to have team lead permissions (Product Lead, Engineering Manager, Domain Lead) |
-| F25 | **Engineering Manager view** | EM can see all teams under their responsibility — cross-team dashboard |
-| F26 | **Team creation — EM assignment** | When creating a team, identify the Engineering Manager responsible |
-| F27 | **Progress history visualization** | Chart showing score evolution across checkpoints over time |
-| F28 | **Calibration workflow** | Structured flow: self-assessment → team lead review → calibration session → agreed scores |
-| F29 | **Goal suggestions from gaps** | Auto-suggest action plan goals based on lowest-scored skills |
-| F30 | **Notifications / reminders** | Remind members to complete assessment, remind leads to calibrate |
-| F31 | **Authentication** | Proper auth (AWS Cognito or similar) replacing team code login |
+| # | Requirement | Description | Status |
+|---|-------------|-------------|--------|
+| F24 | **Multiple team leads / shared access** | Allow more than one person to have team lead permissions (Product Lead, Engineering Manager, Domain Lead) | ✅ Done |
+| F25 | **Engineering Manager view** | EM can see all teams under their responsibility — cross-team dashboard | ⏳ Planned |
+| F26 | **Team creation — EM assignment** | When creating a team, identify the Engineering Manager responsible | ⏳ Planned |
+| F27 | **Progress history visualization** | Chart showing score evolution across checkpoints over time | ✅ Done |
+| F28 | **Calibration workflow** | Structured flow: self-assessment → team lead review → calibration session → agreed scores | ⏳ Planned |
+| F29 | **Goal suggestions from gaps** | Auto-suggest action plan goals based on lowest-scored skills | ✅ Done |
+| F30 | **Notifications / reminders** | Remind members to complete assessment, remind leads to calibrate | ⏳ Planned |
+| F31 | **Authentication** | Proper auth (AWS Cognito or similar) replacing team code login | ⏳ Planned |
 
 ### P3 — Future
 
@@ -102,12 +103,12 @@ A platform that enables team leads to structure, track, and support the career d
 
 ### P1 — Next Iteration
 
-| # | Requirement | Description |
-|---|-------------|-------------|
-| T07 | **Database migration** | Move from JSON file to PostgreSQL for reliability and concurrent access |
-| T08 | **API versioning** | Version the API (`/api/v1/`) for backward compatibility |
-| T09 | **Input validation** | Server-side validation for all endpoints |
-| T10 | **Error handling** | Consistent error responses and client-side error display |
+| # | Requirement | Description | Status |
+|---|-------------|-------------|--------|
+| T07 | **Database migration** | Move from JSON file to PostgreSQL for reliability and concurrent access | ✅ Done (already on PG) |
+| T08 | **API versioning** | Version the API (`/api/v1/`) for backward compatibility | ⏳ Planned |
+| T09 | **Input validation** | Server-side validation for all endpoints | ✅ Done |
+| T10 | **Error handling** | Consistent error responses and client-side error display | ✅ Done |
 
 ### P2 — Important
 

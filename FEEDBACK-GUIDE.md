@@ -94,6 +94,12 @@ A platform to help **team leads** structure and track the career development of 
 |---------|-------------|
 | 📊 Management dashboard | Aggregated view across all teams |
 | 📉 Gap analysis report | Automated critical gap identification |
+
+
+### Out of scope
+
+| Feature | Description |
+|---------|-------------|
 | 📖 Learning resources | Link courses/mentors to skills |
 | 🤝 Peer feedback | Team members give feedback on each other |
 | 🔗 HR integration | Sync with company HR systems |
