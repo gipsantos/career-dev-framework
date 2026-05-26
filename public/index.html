@@ -190,7 +190,10 @@
     <div id="screen-setup-teams" style="display:none">
       <div class="fb mb16">
         <div><div class="pg-t">Teams</div><div class="pg-s">Create and manage teams, assign leads and configure details.</div></div>
-        <button class="btn btn-p" onclick="openTeamModal(null)">+ New Team</button>
+        <div class="fx" style="gap:8px">
+          <button class="btn btn-p" onclick="openTeamModal(null)">+ New Team</button>
+          <button class="btn btn-d btn-sm" onclick="resetAllData()">Reset All Data</button>
+        </div>
       </div>
       <div class="card" style="padding:0;overflow:hidden">
         <table class="atbl"><thead><tr>

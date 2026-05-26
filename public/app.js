@@ -195,9 +195,6 @@ async function loginWithProfile(profile, userName, allProfiles) {
     S.teamIcon=r.team.icon||'👥'; S.teamColor=r.team.color||'#1E2533';
     S.userName=r.userName; S.roleId=r.memberRoleId; S.roleLabel=r.roleLabel||'';
     S._allProfiles = allProfiles;
-    if (r.roles.length > 1 || (!S.roleId && r.roles.length > 0 && (r.needsRolePick || r.role==='lead' || r.role==='em'))) {
-      _pendingRoles=r.roles; showRolePicker(r.roles, S.roleId); return;
-    }
     if (r.roles.length > 0) {
       const myRole = r.roles.find(x => x.id===S.roleId);
       if (myRole) { S.roleName=myRole.name; S.matrix=myRole.sections||[]; }
@@ -282,9 +279,6 @@ async function doLogin() {
     // Re-discover all profiles now that user may have joined a new team
     const disc = await api('POST', '/api/login/discover', { userName: n });
     S._allProfiles = disc.profiles || [];
-    if (r.roles.length > 1 || (!S.roleId && r.roles.length > 0 && (r.needsRolePick || r.role==='lead' || r.role==='em'))) {
-      _pendingRoles=r.roles; showRolePicker(r.roles, S.roleId); return;
-    }
     if (r.roles.length > 0) {
       const myRole = r.roles.find(x => x.id===S.roleId);
       if (myRole) { S.roleName=myRole.name; S.matrix=myRole.sections||[]; }
@@ -2206,6 +2200,18 @@ async function delTeam(id, name) {
       await api('DELETE', `/api/admin/teams/${id}`);
       renderAdmin();
       toast('Team deleted');
+    }, null
+  );
+}
+
+function resetAllData() {
+  showConfirmDialog('Reset All Data', '<strong>This will permanently delete ALL teams, members, assessments, and action plans.</strong><br><br>This cannot be undone. Are you sure?', 'Yes, delete everything', 'Cancel',
+    async () => {
+      try {
+        await api('POST', '/api/admin/reset', { code: 'admin2026' });
+        toast('✅ All data cleared');
+        renderAdmin();
+      } catch(e) { toast('⚠ ' + e.message); }
     }, null
   );
 }
