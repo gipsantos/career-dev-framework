@@ -119,7 +119,17 @@ async function getTeamAssessments(teamId) {
   return result;
 }
 
+async function resetAll() {
+  if (pool) {
+    await pool.query('DELETE FROM assessments');
+    await pool.query('DELETE FROM teams');
+  } else {
+    data = { teams: [], assessments: {} };
+    await save();
+  }
+}
+
 module.exports = {
   initDB, getTeams, getTeam, getTeamByCode, saveTeam, deleteTeam,
-  getAssessment, saveAssessment, getTeamAssessments,
+  getAssessment, saveAssessment, getTeamAssessments, resetAll,
 };

@@ -102,6 +102,13 @@ app.delete('/api/admin/teams/:id', asyncHandler(async (req, res) => {
   res.json({ ok: true });
 }));
 
+// Reset all data (admin only) — call once then remove
+app.post('/api/admin/reset', asyncHandler(async (req, res) => {
+  if (req.body.code !== ADMIN_CODE) return res.status(401).json({ error: 'Invalid admin code' });
+  await db.resetAll();
+  res.json({ ok: true, message: 'All data cleared' });
+}));
+
 // ── SKILLS LIBRARY ────────────────────────────────────────────────────────────
 const SKILL_LIBRARY = [
   // Technical
